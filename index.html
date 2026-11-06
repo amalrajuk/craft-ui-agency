@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRAFT UI | Your Vision. Our Craft. - Digital Development Agency</title>
+  <meta name="description" content="CRAFT UI is a premier web development and UI agency specializing in 3D interactive websites, WebGL experiences, custom e-commerce, AI automation, and high-performance digital products for agencies and brands worldwide.">
+  <meta name="keywords" content="CRAFT UI, web development agency, 3D websites, WebGL, Next.js, agency development, Kerala India, UI UX design">
+  
+  <!-- OpenGraph / Social Meta -->
+  <meta property="og:title" content="CRAFT UI | Your Vision. Our Craft.">
+  <meta property="og:description" content="We engineer immersive 3D websites, WebGL experiences, and high-converting digital products for forward-thinking agencies and brands.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/logo.jpg">
+  
+  <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+  
+  <!-- Google Fonts: Bebas Neue, Inter, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- GSAP & ScrollTrigger CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Custom Cursor Elements -->
+  <div class="custom-cursor" id="customCursor"></div>
+  <div class="custom-cursor-follower" id="customCursorFollower"></div>
+
+  <!-- Preloader Screen -->
+  <div class="preloader" id="preloader">
+    <img src="assets/logo.jpg" alt="CRAFT UI" class="preloader__logo">
+    <div class="preloader__bar">
+      <div class="preloader__progress" id="preloaderProgress"></div>
+      <div class="preloader__dot" id="preloaderDot"></div>
+    </div>
+    <div class="preloader__text" id="preloaderText">INITIALIZING ENGINE [ 0% ]</div>
+  </div>
+
+  <!-- Floating Glass Capsule Pill Navigation -->
+  <div class="nav-wrapper">
+    <nav class="nav-glass-pill" id="mainNav">
+      <!-- Left links -->
+      <div class="nav__links-group">
+        <a href="#hero" class="nav__link">Home</a>
+        <a href="#services" class="nav__link">Services</a>
+        <a href="#portfolio" class="nav__link">Portfolio</a>
+      </div>
+
+      <!-- Center Logo & Brand -->
+      <a href="#hero" class="nav__brand">
+        <img src="assets/logo.jpg" alt="Craft UI Logo" class="nav__logo-img">
+        <span class="nav__brand-text">CRAFT<span>.UI</span></span>
+      </a>
+
+      <!-- Right links -->
+      <div class="nav__links-group">
+        <a href="#reels" class="nav__link">Reels</a>
+        <a href="#testimonials" class="nav__link">Reviews</a>
+        <a href="#contact" class="nav__link">Contact</a>
+      </div>
+
+      <!-- Action buttons -->
+      <div class="nav__actions">
+        <!-- Sound FX toggle -->
+        <button class="nav__btn-icon" id="soundToggle" title="Toggle Sound FX" aria-label="Toggle Sound">
+          <i data-lucide="volume-2" id="soundIcon" style="width: 18px; height: 18px;"></i>
+        </button>
+
+        <!-- Theme toggle -->
+        <button class="nav__btn-icon" id="themeToggle" title="Toggle Dark/Light Theme" aria-label="Toggle Theme">
+          <i data-lucide="sun" id="themeIcon" style="width: 18px; height: 18px;"></i>
+        </button>
+
+        <!-- Mobile hamburger -->
+        <button class="nav__mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation Menu">
+          <i data-lucide="menu" style="width: 24px; height: 24px;"></i>
+        </button>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Mobile Fullscreen Navigation Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#hero" class="mobile-menu__link">Home</a>
+    <a href="#services" class="mobile-menu__link">Services</a>
+    <a href="#portfolio" class="mobile-menu__link">Portfolio</a>
+    <a href="#reels" class="mobile-menu__link">Reels</a>
+    <a href="#testimonials" class="mobile-menu__link">Reviews</a>
+    <a href="#contact" class="mobile-menu__link">Contact</a>
+  </div>
+
+  <!-- ==========================================================================
+       MAIN STACKING CARDS CONTAINER (Signature Stacking Scroll Effect)
+       ========================================================================== -->
+  <main class="panels-main" id="panelsContainer">
+
+    <!-- PANEL 0: HERO SECTION -->
+    <section class="stack-panel hero-panel" id="hero" data-panel-index="0">
+      <div class="hero-section">
+        <!-- 3D Perspective Moving Grid -->
+        <div class="hero-grid" id="heroGrid"></div>
+        <div class="hero-ambient-glow"></div>
+
+        <div class="hero-content">
+          <div class="hero-tag">
+            <i data-lucide="sparkles" style="width: 14px; height: 14px;"></i>
+            <span>Premier Development Agency for Agencies & Brands</span>
+          </div>
+
+          <div class="hero-titles-wrap" id="heroTitles">
+            <h1 class="hero-title-outline">CRAFT</h1>
+            <h1 class="hero-title-solid">UI<span>.STUDIO</span></h1>
+          </div>
+
+          <p class="hero-subtitle">
+            <strong>Your Vision. Our Craft.</strong> We engineer ultra-fast, animated 3D websites, WebGL experiences, and custom digital infrastructure that convert visitors into passionate clients.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#contact" class="btn-primary">
+              <span>Start A Project</span>
+              <i data-lucide="arrow-up-right" style="width: 20px; height: 20px;"></i>
+            </a>
+            <a href="#services" class="btn-secondary">
+              <span>Explore Capabilities</span>
+              <i data-lucide="chevron-down" style="width: 20px; height: 20px;"></i>
+            </a>
+          </div>
+
+          <div class="hero-stats-row">
+            <div class="hero-stat-item">
+              <div class="hero-stat-num">99.9%</div>
+              <div class="hero-stat-label">Performance Score</div>
+            </div>
+            <div class="hero-stat-item">
+              <div class="hero-stat-num">50+</div>
+              <div class="hero-stat-label">Websites Shipped</div>
+            </div>
+            <div class="hero-stat-item">
+              <div class="hero-stat-num">100%</div>
+              <div class="hero-stat-label">Client Satisfaction</div>
+            </div>
+            <div class="hero-stat-item">
+              <div class="hero-stat-num">24/7</div>
+              <div class="hero-stat-label">Engineering Support</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PANEL 1: 01 / CAPABILITIES (3D Folding Cube Services) -->
+    <section class="stack-panel" id="services" data-panel-index="1">
+      <div class="panel-badge">
+        <span class="panel-badge__dot"></span>
+        01 / CAPABILITIES
+      </div>
+
+      <div class="panel-content">
+        <div class="section-container">
+          <div class="section-header">
+            <span class="section-label">What We Do</span>
+            <h2 class="section-title">Our <span class="accent-text">Services</span></h2>
+            <p class="section-desc">
+              We partner with creative agencies, visionary startups, and global brands to architect high-impact digital experiences that dominate search and engage users.
+            </p>
+          </div>
+
+          <!-- 3D Folding Cube List -->
+          <div class="service-list-container">
+
+            <!-- Service 1: Business Websites -->
+            <div class="service-block-wrapper">
+              <div class="service-box">
+                <div class="service-face front">
+                  <h2 class="service-title">Business Websites</h2>
+                  <div class="service-right-content">
+                    <div class="service-icon-header">
+                      <span class="service-icon-label">WEB / DEV</span>
+                      <i data-lucide="monitor" style="width: 22px; height: 22px;"></i>
+                    </div>
+                    <div class="service-equalizer">
+                      <div class="equalizer-bars">
+                        <div class="equalizer-bar" style="height: 18px;"></div>
+                        <div class="equalizer-bar" style="height: 24px;"></div>
+                        <div class="equalizer-bar" style="height: 14px;"></div>
+                        <div class="equalizer-bar" style="height: 28px;"></div>
+                        <div class="equalizer-bar" style="height: 20px;"></div>
+                        <div class="equalizer-bar" style="height: 16px;"></div>
+                      </div>
+                      <div class="service-index">/ 01</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="service-face top" style="background-image: url('https://images.unsplash.com/photo-1614729939124-03290b5509ce?auto=format&fit=crop&w=1400&q=80');">
+                  <div class="service-top-overlay"></div>
+                  <div class="service-top-line"></div>
+                  <h3 class="service-banner-text">CONVERT VISITORS INTO CUSTOMERS</h3>
+                </div>
+                <div class="service-face right"></div>
+                <div class="service-face bottom"></div>
+                <div class="service-face left"></div>
+              </div>
+            </div>
+
+            <!-- Service 2: Animated & 3D Websites -->
+            <div class="service-block-wrapper">
+              <div class="service-box">
+                <div class="service-face front">
+                  <h2 class="service-title">Animated & 3D Websites</h2>
+                  <div class="service-right-content">
+                    <div class="service-icon-header">
+                      <span class="service-icon-label">3D / MOTION</span>
+                      <i data-lucide="box" style="width: 22px; height: 22px;"></i>
+                    </div>
+                    <div class="service-equalizer">
+                      <div class="equalizer-bars">
+                        <div class="equalizer-bar" style="height: 22px;"></div>
+                        <div class="equalizer-bar" style="height: 16px;"></div>
+                        <div class="equalizer-bar" style="height: 28px;"></div>
+                        <div class="equalizer-bar" style="height: 20px;"></div>
+                        <div class="equalizer-bar" style="height: 26px;"></div>
+                        <div class="equalizer-bar" style="height: 14px;"></div>
+                      </div>
+                      <div class="service-index">/ 02</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="service-face top" style="background-image: url('https://images.unsplash.com/photo-1634152962476-4b8a00e1915c?auto=format&fit=crop&w=1400&q=80');">
+                  <div class="service-top-overlay"></div>
+                  <div class="service-top-line"></div>
+                  <h3 class="service-banner-text">IMMERSIVE WEBGL EXPERIENCES</h3>
+                </div>
+                <div class="service-face right"></div>
+                <div class="service-face bottom"></div>
+                <div class="service-face left"></div>
+              </div>
+            </div>
+
+            <!-- Service 3: Shopify & E-Commerce -->
+            <div class="service-block-wrapper">
+              <div class="service-box">
+                <div class="service-face front">
+                  <h2 class="service-title">Shopify Development</h2>
+                  <div class="service-right-content">
+                    <div class="service-icon-header">
+                      <span class="service-icon-label">E-COMM</span>
+                      <i data-lucide="shopping-bag" style="width: 22px; height: 22px;"></i>
+                    </div>
+                    <div class="service-equalizer">
+                      <div class="equalizer-bars">
+                        <div class="equalizer-bar" style="height: 14px;"></div>
+                        <div class="equalizer-bar" style="height: 26px;"></div>
+                        <div class="equalizer-bar" style="height: 18px;"></div>
+                        <div class="equalizer-bar" style="height: 22px;"></div>
+                        <div class="equalizer-bar" style="height: 28px;"></div>
+                        <div class="equalizer-bar" style="height: 16px;"></div>
+                      </div>
+                      <div class="service-index">/ 03</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="service-face top" style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1400&q=80');">
+                  <div class="service-top-overlay"></div>
+                  <div class="service-top-line"></div>
+                  <h3 class="service-banner-text">SCALE YOUR E-COMMERCE REVENUE</h3>
+                </div>
+                <div class="service-face right"></div>
+                <div class="service-face bottom"></div>
+                <div class="service-face left"></div>
+              </div>
+            </div>
+
+            <!-- Service 4: Custom Web Applications & SaaS -->
+            <div class="service-block-wrapper">
+              <div class="service-box">
+                <div class="service-face front">
+                  <h2 class="service-title">Custom E-Commerce & SaaS</h2>
+                  <div class="service-right-content">
+                    <div class="service-icon-header">
+                      <span class="service-icon-label">RETAIL / DEV</span>
+                      <i data-lucide="cpu" style="width: 22px; height: 22px;"></i>
+                    </div>
+                    <div class="service-equalizer">
+                      <div class="equalizer-bars">
+                        <div class="equalizer-bar" style="height: 24px;"></div>
+                        <div class="equalizer-bar" style="height: 18px;"></div>
+                        <div class="equalizer-bar" style="height: 28px;"></div>
+                        <div class="equalizer-bar" style="height: 14px;"></div>
+                        <div class="equalizer-bar" style="height: 22px;"></div>
+                        <div class="equalizer-bar" style="height: 20px;"></div>
+                      </div>
+                      <div class="service-index">/ 04</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="service-face top" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1400&q=80');">
+                  <div class="service-top-overlay"></div>
+                  <div class="service-top-line"></div>
+                  <h3 class="service-banner-text">TAILORED HIGH PERFORMANCE PLATFORMS</h3>
+                </div>
+                <div class="service-face right"></div>
+                <div class="service-face bottom"></div>
+                <div class="service-face left"></div>
+              </div>
+            </div>
+
+            <!-- Service 5: Chatbots & AI Integration -->
+            <div class="service-block-wrapper">
+              <div class="service-box">
+                <div class="service-face front">
+                  <h2 class="service-title">Chatbots & AI Systems</h2>
+                  <div class="service-right-content">
+                    <div class="service-icon-header">
+                      <span class="service-icon-label">AI / BOTS</span>
+                      <i data-lucide="bot" style="width: 22px; height: 22px;"></i>
+                    </div>
+                    <div class="service-equalizer">
+                      <div class="equalizer-bars">
+                        <div class="equalizer-bar" style="height: 20px;"></div>
+                        <div class="equalizer-bar" style="height: 28px;"></div>
+                        <div class="equalizer-bar" style="height: 16px;"></div>
+                        <div class="equalizer-bar" style="height: 24px;"></div>
+                        <div class="equalizer-bar" style="height: 18px;"></div>
+                        <div class="equalizer-bar" style="height: 26px;"></div>
+                      </div>
+                      <div class="service-index">/ 05</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="service-face top" style="background-image: url('https://images.unsplash.com/photo-1633511090172-689e4bead2a8?auto=format&fit=crop&w=1400&q=80');">
+                  <div class="service-top-overlay"></div>
+                  <div class="service-top-line"></div>
+                  <h3 class="service-banner-text">24/7 AUTOMATED INTELLIGENCE</h3>
+                </div>
+                <div class="service-face right"></div>
+                <div class="service-face bottom"></div>
+                <div class="service-face left"></div>
+              </div>
+            </div>
+
+            <!-- Service 6: Social & WhatsApp Automation -->
+            <div class="service-block-wrapper">
+              <div class="service-box">
+                <div class="service-face front">
+                  <h2 class="service-title">Instagram & WhatsApp Flow</h2>
+                  <div class="service-right-content">
+                    <div class="service-icon-header">
+                      <span class="service-icon-label">SOCIAL / AUTO</span>
+                      <i data-lucide="message-square" style="width: 22px; height: 22px;"></i>
+                    </div>
+                    <div class="service-equalizer">
+                      <div class="equalizer-bars">
+                        <div class="equalizer-bar" style="height: 16px;"></div>
+                        <div class="equalizer-bar" style="height: 22px;"></div>
+                        <div class="equalizer-bar" style="height: 26px;"></div>
+                        <div class="equalizer-bar" style="height: 18px;"></div>
+                        <div class="equalizer-bar" style="height: 24px;"></div>
+                        <div class="equalizer-bar" style="height: 20px;"></div>
+                      </div>
+                      <div class="service-index">/ 06</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="service-face top" style="background-image: url('https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&w=1400&q=80');">
+                  <div class="service-top-overlay"></div>
+                  <div class="service-top-line"></div>
+                  <h3 class="service-banner-text">SMART MESSAGING WORKFLOWS</h3>
+                </div>
+                <div class="service-face right"></div>
+                <div class="service-face bottom"></div>
+                <div class="service-face left"></div>
+              </div>
+            </div>
+
+            <!-- Service 7: CMS & Admin Dashboards -->
+            <div class="service-block-wrapper">
+              <div class="service-box">
+                <div class="service-face front">
+                  <h2 class="service-title">CMS & Dashboards</h2>
+                  <div class="service-right-content">
+                    <div class="service-icon-header">
+                      <span class="service-icon-label">SYS / ADMIN</span>
+                      <i data-lucide="layout-dashboard" style="width: 22px; height: 22px;"></i>
+                    </div>
+                    <div class="service-equalizer">
+                      <div class="equalizer-bars">
+                        <div class="equalizer-bar" style="height: 24px;"></div>
+                        <div class="equalizer-bar" style="height: 14px;"></div>
+                        <div class="equalizer-bar" style="height: 20px;"></div>
+                        <div class="equalizer-bar" style="height: 28px;"></div>
+                        <div class="equalizer-bar" style="height: 18px;"></div>
+                        <div class="equalizer-bar" style="height: 22px;"></div>
+                      </div>
+                      <div class="service-index">/ 07</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="service-face top" style="background-image: url('https://images.unsplash.com/photo-1604871000636-074fa5117945?auto=format&fit=crop&w=1400&q=80');">
+                  <div class="service-top-overlay"></div>
+                  <div class="service-top-line"></div>
+                  <h3 class="service-banner-text">FULL CONTROL OVER YOUR DATA</h3>
+                </div>
+                <div class="service-face right"></div>
+                <div class="service-face bottom"></div>
+                <div class="service-face left"></div>
+              </div>
+            </div>
+
+            <!-- Service 8: Scalable Backend Systems -->
+            <div class="service-block-wrapper">
+              <div class="service-box">
+                <div class="service-face front">
+                  <h2 class="service-title">Backend Systems & APIs</h2>
+                  <div class="service-right-content">
+                    <div class="service-icon-header">
+                      <span class="service-icon-label">BACKEND / DB</span>
+                      <i data-lucide="server" style="width: 22px; height: 22px;"></i>
+                    </div>
+                    <div class="service-equalizer">
+                      <div class="equalizer-bars">
+                        <div class="equalizer-bar" style="height: 26px;"></div>
+                        <div class="equalizer-bar" style="height: 20px;"></div>
+                        <div class="equalizer-bar" style="height: 24px;"></div>
+                        <div class="equalizer-bar" style="height: 16px;"></div>
+                        <div class="equalizer-bar" style="height: 28px;"></div>
+                        <div class="equalizer-bar" style="height: 18px;"></div>
+                      </div>
+                      <div class="service-index">/ 08</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="service-face top" style="background-image: url('https://images.unsplash.com/photo-1558655146-d49348e942d4?auto=format&fit=crop&w=1400&q=80');">
+                  <div class="service-top-overlay"></div>
+                  <div class="service-top-line"></div>
+                  <h3 class="service-banner-text">ROBUST SCALABLE ARCHITECTURE</h3>
+                </div>
+                <div class="service-face right"></div>
+                <div class="service-face bottom"></div>
+                <div class="service-face left"></div>
+              </div>
+            </div>
+
+            <!-- Service 9: Digital Branding & Motion -->
+            <div class="service-block-wrapper">
+              <div class="service-box">
+                <div class="service-face front">
+                  <h2 class="service-title">Brand Identity & UI Design</h2>
+                  <div class="service-right-content">
+                    <div class="service-icon-header">
+                      <span class="service-icon-label">DESIGN / UI</span>
+                      <i data-lucide="pen-tool" style="width: 22px; height: 22px;"></i>
+                    </div>
+                    <div class="service-equalizer">
+                      <div class="equalizer-bars">
+                        <div class="equalizer-bar" style="height: 18px;"></div>
+                        <div class="equalizer-bar" style="height: 26px;"></div>
+                        <div class="equalizer-bar" style="height: 22px;"></div>
+                        <div class="equalizer-bar" style="height: 28px;"></div>
+                        <div class="equalizer-bar" style="height: 14px;"></div>
+                        <div class="equalizer-bar" style="height: 20px;"></div>
+                      </div>
+                      <div class="service-index">/ 09</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="service-face top" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=80');">
+                  <div class="service-top-overlay"></div>
+                  <div class="service-top-line"></div>
+                  <h3 class="service-banner-text">DOMINATE SEARCH & CRAFT IDENTITY</h3>
+                </div>
+                <div class="service-face right"></div>
+                <div class="service-face bottom"></div>
+                <div class="service-face left"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PANEL 2: 02 / WORK (Portfolio Showcase) -->
+    <section class="stack-panel" id="portfolio" data-panel-index="2">
+      <div class="panel-badge">
+        <span class="panel-badge__dot"></span>
+        02 / WORK
+      </div>
+
+      <div class="panel-content">
+        <div class="section-container">
+          <div class="section-header">
+            <span class="section-label">Featured Projects</span>
+            <h2 class="section-title">Selected <span class="accent-text">Works</span></h2>
+            <p class="section-desc">
+              Explore recent digital applications, bespoke 3D websites, and scalable e-commerce systems engineered by Craft UI.
+            </p>
+          </div>
+
+          <!-- Category filter buttons -->
+          <div class="portfolio-filters">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="3d">Animated & 3D</button>
+            <button class="filter-btn" data-filter="ecomm">E-Commerce</button>
+            <button class="filter-btn" data-filter="business">Business Sites</button>
+            <button class="filter-btn" data-filter="systems">Systems & Apps</button>
+          </div>
+
+          <!-- Project Cards Grid -->
+          <div class="portfolio-grid" id="portfolioGrid">
+
+            <!-- Project 1 -->
+            <div class="portfolio-card" data-category="3d">
+              <div class="portfolio-card__img-wrap">
+                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" alt="Nebula Metaverse Studio" class="portfolio-card__img">
+                <div class="portfolio-card__badge-top">
+                  <span class="portfolio-card__tag">3D / WEBGL</span>
+                  <span class="portfolio-card__year">2026</span>
+                </div>
+              </div>
+              <div class="portfolio-card__body">
+                <h3 class="portfolio-card__title">Aura 3D Interactive</h3>
+                <p class="portfolio-card__desc">Immersive WebGL brand experience with custom Three.js shader particle systems, real-time physics, and 60 FPS mobile optimization.</p>
+                <div class="portfolio-card__stack">
+                  <span class="stack-chip">Three.js</span>
+                  <span class="stack-chip">Next.js 15</span>
+                  <span class="stack-chip">GSAP</span>
+                  <span class="stack-chip">GLSL Shaders</span>
+                </div>
+                <a href="#contact" class="portfolio-card__link">
+                  <span>View Case Study</span>
+                  <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="portfolio-card" data-category="ecomm">
+              <div class="portfolio-card__img-wrap">
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80" alt="Veloce Luxury Goods" class="portfolio-card__img">
+                <div class="portfolio-card__badge-top">
+                  <span class="portfolio-card__tag">E-COMMERCE</span>
+                  <span class="portfolio-card__year">2026</span>
+                </div>
+              </div>
+              <div class="portfolio-card__body">
+                <h3 class="portfolio-card__title">Veloce Fashion Global</h3>
+                <p class="portfolio-card__desc">High-speed headless Shopify store featuring fluid micro-interactions, dynamic multi-currency checkouts, and 300% conversion boost.</p>
+                <div class="portfolio-card__stack">
+                  <span class="stack-chip">Shopify Plus</span>
+                  <span class="stack-chip">Tailwind CSS</span>
+                  <span class="stack-chip">Stripe</span>
+                  <span class="stack-chip">React</span>
+                </div>
+                <a href="#contact" class="portfolio-card__link">
+                  <span>View Case Study</span>
+                  <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="portfolio-card" data-category="business">
+              <div class="portfolio-card__img-wrap">
+                <img src="https://images.unsplash.com/photo-1614729939124-03290b5509ce?auto=format&fit=crop&w=800&q=80" alt="Vertex Venture Capital" class="portfolio-card__img">
+                <div class="portfolio-card__badge-top">
+                  <span class="portfolio-card__tag">BUSINESS SITE</span>
+                  <span class="portfolio-card__year">2025</span>
+                </div>
+              </div>
+              <div class="portfolio-card__body">
+                <h3 class="portfolio-card__title">Vertex Capital Group</h3>
+                <p class="portfolio-card__desc">Fintech & corporate landing page with interactive portfolio visualizers, dark mode ambient glass styling, and automated lead routing.</p>
+                <div class="portfolio-card__stack">
+                  <span class="stack-chip">Next.js</span>
+                  <span class="stack-chip">Framer Motion</span>
+                  <span class="stack-chip">TypeScript</span>
+                  <span class="stack-chip">Supabase</span>
+                </div>
+                <a href="#contact" class="portfolio-card__link">
+                  <span>View Case Study</span>
+                  <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="portfolio-card" data-category="systems">
+              <div class="portfolio-card__img-wrap">
+                <img src="https://images.unsplash.com/photo-1558655146-d49348e942d4?auto=format&fit=crop&w=800&q=80" alt="Nexus Intelligence Dashboard" class="portfolio-card__img">
+                <div class="portfolio-card__badge-top">
+                  <span class="portfolio-card__tag">SYSTEMS & APPS</span>
+                  <span class="portfolio-card__year">2026</span>
+                </div>
+              </div>
+              <div class="portfolio-card__body">
+                <h3 class="portfolio-card__title">Nexus SaaS Control Plane</h3>
+                <p class="portfolio-card__desc">Enterprise analytics and multi-tenant management platform handling 1M+ real-time telemetry events per minute with custom UI widgets.</p>
+                <div class="portfolio-card__stack">
+                  <span class="stack-chip">Vue 3</span>
+                  <span class="stack-chip">FastAPI</span>
+                  <span class="stack-chip">PostgreSQL</span>
+                  <span class="stack-chip">Docker</span>
+                </div>
+                <a href="#contact" class="portfolio-card__link">
+                  <span>View Case Study</span>
+                  <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="portfolio-card" data-category="3d">
+              <div class="portfolio-card__img-wrap">
+                <img src="https://images.unsplash.com/photo-1634152962476-4b8a00e1915c?auto=format&fit=crop&w=800&q=80" alt="CyberSound Audio Lab" class="portfolio-card__img">
+                <div class="portfolio-card__badge-top">
+                  <span class="portfolio-card__tag">3D / MOTION</span>
+                  <span class="portfolio-card__year">2026</span>
+                </div>
+              </div>
+              <div class="portfolio-card__body">
+                <h3 class="portfolio-card__title">Synapse Audio Experience</h3>
+                <p class="portfolio-card__desc">Web Audio API visualizer featuring 3D reactive geometry, interactive stem mixer, and spatial stereo sound choreography.</p>
+                <div class="portfolio-card__stack">
+                  <span class="stack-chip">Web Audio API</span>
+                  <span class="stack-chip">Three.js</span>
+                  <span class="stack-chip">GSAP</span>
+                </div>
+                <a href="#contact" class="portfolio-card__link">
+                  <span>View Case Study</span>
+                  <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="portfolio-card" data-category="ecomm">
+              <div class="portfolio-card__img-wrap">
+                <img src="https://images.unsplash.com/photo-1604871000636-074fa5117945?auto=format&fit=crop&w=800&q=80" alt="Krono Watchmakers" class="portfolio-card__img">
+                <div class="portfolio-card__badge-top">
+                  <span class="portfolio-card__tag">E-COMMERCE</span>
+                  <span class="portfolio-card__year">2025</span>
+                </div>
+              </div>
+              <div class="portfolio-card__body">
+                <h3 class="portfolio-card__title">Chronos Horology</h3>
+                <p class="portfolio-card__desc">Luxury watch configurator allowing clients to customize dials, straps, and bezels in 360-degree interactive photorealistic detail.</p>
+                <div class="portfolio-card__stack">
+                  <span class="stack-chip">Shopify</span>
+                  <span class="stack-chip">3D Configurator</span>
+                  <span class="stack-chip">Next.js</span>
+                </div>
+                <a href="#contact" class="portfolio-card__link">
+                  <span>View Case Study</span>
+                  <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PANEL 3: 03 / REELS (Interactive Motion Showcase) -->
+    <section class="stack-panel" id="reels" data-panel-index="3">
+      <div class="panel-badge">
+        <span class="panel-badge__dot"></span>
+        03 / REELS
+      </div>
+
+      <div class="panel-content">
+        <div class="section-container">
+          <div class="section-header">
+            <span class="section-label">Visual Motion</span>
+            <h2 class="section-title">Design <span class="accent-text">In Motion</span></h2>
+            <p class="section-desc">
+              Watch how our interface animations, kinetic typography, and fluid micro-interactions bring digital products to life.
+            </p>
+          </div>
+
+          <div class="reels-carousel-container">
+            <div class="reels-track">
+
+              <!-- Reel Card 1 -->
+              <div class="reel-card">
+                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80" alt="Reel 1" class="reel-video-bg">
+                <div class="reel-overlay"></div>
+                <div class="reel-content">
+                  <div class="reel-play-btn" title="Watch Reel">
+                    <i data-lucide="play" style="width: 22px; height: 22px; margin-left: 3px;"></i>
+                  </div>
+                  <h3 class="reel-title">3D Hero Physics</h3>
+                  <p class="reel-desc">Interactive WebGL grid dynamics & camera panning on mouse move.</p>
+                </div>
+              </div>
+
+              <!-- Reel Card 2 -->
+              <div class="reel-card">
+                <img src="https://images.unsplash.com/photo-1634152962476-4b8a00e1915c?auto=format&fit=crop&w=600&q=80" alt="Reel 2" class="reel-video-bg">
+                <div class="reel-overlay"></div>
+                <div class="reel-content">
+                  <div class="reel-play-btn" title="Watch Reel">
+                    <i data-lucide="play" style="width: 22px; height: 22px; margin-left: 3px;"></i>
+                  </div>
+                  <h3 class="reel-title">Kinetic Navigation</h3>
+                  <p class="reel-desc">Glass capsule morphing navigation pill with magnetic cursor interaction.</p>
+                </div>
+              </div>
+
+              <!-- Reel Card 3 -->
+              <div class="reel-card">
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=600&q=80" alt="Reel 3" class="reel-video-bg">
+                <div class="reel-overlay"></div>
+                <div class="reel-content">
+                  <div class="reel-play-btn" title="Watch Reel">
+                    <i data-lucide="play" style="width: 22px; height: 22px; margin-left: 3px;"></i>
+                  </div>
+                  <h3 class="reel-title">3D Folding Cubes</h3>
+                  <p class="reel-desc">CSS 3D perspective transforms with responsive touch support.</p>
+                </div>
+              </div>
+
+              <!-- Reel Card 4 -->
+              <div class="reel-card">
+                <img src="https://images.unsplash.com/photo-1633511090172-689e4bead2a8?auto=format&fit=crop&w=600&q=80" alt="Reel 4" class="reel-video-bg">
+                <div class="reel-overlay"></div>
+                <div class="reel-content">
+                  <div class="reel-play-btn" title="Watch Reel">
+                    <i data-lucide="play" style="width: 22px; height: 22px; margin-left: 3px;"></i>
+                  </div>
+                  <h3 class="reel-title">SaaS Dark UI Systems</h3>
+                  <p class="reel-desc">Real-time data visualization charts with custom shader glows.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PANEL 4: 04 / STORIES (Client Testimonials) -->
+    <section class="stack-panel" id="testimonials" data-panel-index="4">
+      <div class="panel-badge">
+        <span class="panel-badge__dot"></span>
+        04 / STORIES
+      </div>
+
+      <div class="panel-content">
+        <div class="section-container">
+          <div class="section-header">
+            <span class="section-label">Client Trust</span>
+            <h2 class="section-title">Client <span class="accent-text">Stories</span></h2>
+            <p class="section-desc">
+              Hear directly from founders, creative directors, and agency leaders who partnered with Craft UI to build their dream digital products.
+            </p>
+          </div>
+
+          <!-- Stories Grid -->
+          <div class="stories-grid" id="storiesGrid">
+
+            <!-- Testimonial 1 -->
+            <div class="story-card">
+              <div>
+                <div class="story-stars">
+                  <i data-lucide="star" style="fill: currentColor; width: 18px; height: 18px;"></i>
+                  <i data-lucide="star" style="fill: currentColor; width: 18px; height: 18px;"></i>
+                  <i data-lucide="star" style="fill: currentColor; width: 18px; height: 18px;"></i>
+                  <i data-lucide="star" style="fill: currentColor; width: 18px; height: 18px;"></i>
+                  <i data-lucide="star" style="fill: currentColor; width: 18px; height: 18px;"></i>
+                </div>
+                <p class="story-quote">
+                  "Craft UI transformed our agency's web presence completely. The 3D interactions and silky smooth scrolling blow our clients away. Our inbound leads doubled in the very first month."
+                </p>
+              </div>
+              <div class="story-author-wrap">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="Sarah Jenkins" class="story-avatar">
+                <div>
+                  <h4 class="story-author-name">Sarah Jenkins</h4>
+                  <span class="story-author-role">Founder, Nexus Creative Agency</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="story-card">
+              <div>
+                <div class="story-stars">
+                  <i data-lucide="star" style="fill: currentColor; width: 18px; height: 18px;"></i>
+                  <i data-lucide="star" style="fill: currentColor; width: 18px; height: 18px;"></i>
+                  <i data-lucide="star" style="fill: currentColor; width: 18px; height: 18px;"></i>
+                  <i data-lucide="star" style="fill: currentColor; width: 18px; height: 18px;"></i>
+                  <i data-lucide="star" style="fill: currentColor; width: 18px; height: 18px;"></i>
+                </div>
+                <p class="story-quote">
+                  "The engineering discipline at Craft UI is remarkable. They built our custom e-commerce storefront with complex animations without sacrificing a single millisecond of load speed."
+                </p>
+              </div>
+              <div class="story-author-wrap">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80" alt="Arjun Mehta" class="story-avatar">
+                <div>
+                  <h4 class="story-author-name">Arjun Mehta</h4>
+                  <span class="story-author-role">Head of Product, Veloce Global</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="story-card">
+              <div>
+                <div class="story-stars">
+                  <i data-lucide="star" style="fill: currentColor; width: 18px; height: 18px;"></i>
+                  <i data-lucide="star" style="fill: currentColor; width: 18px; height: 18px;"></i>
+                  <i data-lucide="star" style="fill: currentColor; width: 18px; height: 18px;"></i>
+                  <i data-lucide="star" style="fill: currentColor; width: 18px; height: 18px;"></i>
+                  <i data-lucide="star" style="fill: currentColor; width: 18px; height: 18px;"></i>
+                </div>
+                <p class="story-quote">
+                  "Working with Craft UI felt like pair programming with senior Silicon Valley engineers. Their attention to pixel-perfection and custom 3D shaders is unmatched."
+                </p>
+              </div>
+              <div class="story-author-wrap">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=120&q=80" alt="Elena Rostova" class="story-avatar">
+                <div>
+                  <h4 class="story-author-name">Elena Rostova</h4>
+                  <span class="story-author-role">Design Director, Studio Berlin</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="review-modal-trigger-wrap">
+            <button class="btn-secondary" id="openReviewModalBtn">
+              <i data-lucide="edit-3" style="width: 18px; height: 18px;"></i>
+              <span>Submit A Client Review</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PANEL 5: 05 / CONTACT (High-Tech Transmit Console) -->
+    <section class="stack-panel" id="contact" data-panel-index="5">
+      <div class="panel-badge">
+        <span class="panel-badge__dot"></span>
+        05 / CONTACT
+      </div>
+
+      <div class="panel-content">
+        <div class="section-container">
+          <div class="section-header">
+            <span class="section-label">Initiate Contact</span>
+            <h2 class="section-title">Start A <span class="accent-text">Project</span></h2>
+            <p class="section-desc">
+              Ready to elevate your agency or company's digital footprint? Send us a transmission and our engineering lead will respond within 24 hours.
+            </p>
+          </div>
+
+          <div class="contact-container">
+            <!-- Left Info Column -->
+            <div class="contact-info-col">
+              <h3 class="contact-agency-title">
+                CRAFT UI <span>STUDIO.</span>
+              </h3>
+              <p style="color: var(--text-secondary); line-height: 1.6; font-size: 16px;">
+                Kerala, India — Engineering and delivering high-performance digital experiences for ambitious teams across the globe.
+              </p>
+
+              <div class="contact-meta-item">
+                <div class="contact-meta-icon">
+                  <i data-lucide="mail" style="width: 22px; height: 22px;"></i>
+                </div>
+                <div>
+                  <div class="contact-meta-label">Direct Transmission Email</div>
+                  <div class="contact-meta-val">hello@craftui.studio</div>
+                </div>
+              </div>
+
+              <div class="contact-meta-item">
+                <div class="contact-meta-icon">
+                  <i data-lucide="map-pin" style="width: 22px; height: 22px;"></i>
+                </div>
+                <div>
+                  <div class="contact-meta-label">Headquarters</div>
+                  <div class="contact-meta-val">Kerala, India (Global Remote Delivery)</div>
+                </div>
+              </div>
+
+              <div class="contact-meta-item">
+                <div class="contact-meta-icon">
+                  <i data-lucide="clock" style="width: 22px; height: 22px;"></i>
+                </div>
+                <div>
+                  <div class="contact-meta-label">Response Velocity</div>
+                  <div class="contact-meta-val">&lt; 12 Hours Guarantee</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Form Column -->
+            <div class="contact-form-wrap">
+              <form class="contact-form" id="contactForm">
+                <div class="form-field-group">
+                  <label class="form-label" for="contactName">Your Name / Agency Name *</label>
+                  <input type="text" id="contactName" class="form-input" placeholder="e.g. Alex Morgan / Apex Studio" required>
+                </div>
+
+                <div class="form-field-group">
+                  <label class="form-label" for="contactEmail">Transmission Email *</label>
+                  <input type="email" id="contactEmail" class="form-input" placeholder="alex@company.com" required>
+                </div>
+
+                <div class="form-field-group">
+                  <label class="form-label" for="contactService">Service Required</label>
+                  <select id="contactService" class="form-select">
+                    <option value="Animated & 3D Website">Animated & 3D Website</option>
+                    <option value="Business Website">Business / Corporate Website</option>
+                    <option value="Shopify & E-Commerce">Shopify & Custom E-Commerce</option>
+                    <option value="Custom Web App & SaaS">Custom Web App & SaaS Platform</option>
+                    <option value="Chatbots & AI Integration">Chatbots & AI System</option>
+                    <option value="Full Agency Rebranding">Full Agency Design & Development</option>
+                  </select>
+                </div>
+
+                <div class="form-field-group">
+                  <label class="form-label" for="contactMessage">Project Brief / Transmission Details *</label>
+                  <textarea id="contactMessage" class="form-textarea" placeholder="Tell us about your project timeline, vision, and core requirements..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-transmit" id="transmitBtn">
+                  <span>Transmit Project Brief</span>
+                  <i data-lucide="send" style="width: 20px; height: 20px;"></i>
+                </button>
+
+                <div class="form-status-msg" id="formStatusMsg">
+                  TRANSMISSION RECEIVED. OUR TEAM WILL CONNECT WITH YOU SHORTLY!
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       GRAND SHOWCASE FOOTER
+       ========================================================================== -->
+  <footer class="footer-section">
+    <div class="section-container" style="padding: 0;">
+      <div class="footer-hero-cta">
+        <h2>START A PROJECT <span>WITH CRAFT UI.</span></h2>
+        <a href="#contact" class="btn-primary">
+          <span>Get Started</span>
+          <i data-lucide="arrow-up-right" style="width: 20px; height: 20px;"></i>
+        </a>
+      </div>
+
+      <div class="footer-grid">
+        <!-- Col 1: Brand Info -->
+        <div class="footer-brand-col">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <img src="assets/logo.jpg" alt="Craft UI Logo" style="width: 36px; height: 36px; border-radius: 8px;">
+            <span style="font-family: var(--font-display); font-size: 26px; letter-spacing: 0.08em; color: #fff;">CRAFT<span style="color: var(--accent);">.UI</span></span>
+          </div>
+          <p>
+            Kerala, India.<br>
+            Empowering agencies and modern businesses with next-generation interactive web experiences.
+          </p>
+        </div>
+
+        <!-- Col 2: Capabilities -->
+        <div>
+          <h4 class="footer-links-title">Capabilities</h4>
+          <ul class="footer-links-list">
+            <li><a href="#services" class="footer-link">Dynamic Websites</a></li>
+            <li><a href="#services" class="footer-link">3D & WebGL Motion</a></li>
+            <li><a href="#services" class="footer-link">Shopify & E-Commerce</a></li>
+            <li><a href="#services" class="footer-link">AI Chatbots & Bots</a></li>
+            <li><a href="#services" class="footer-link">SaaS Systems & Dashboards</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Navigation -->
+        <div>
+          <h4 class="footer-links-title">Navigation</h4>
+          <ul class="footer-links-list">
+            <li><a href="#hero" class="footer-link">Home</a></li>
+            <li><a href="#services" class="footer-link">Services</a></li>
+            <li><a href="#portfolio" class="footer-link">Portfolio</a></li>
+            <li><a href="#reels" class="footer-link">Motion Reels</a></li>
+            <li><a href="#testimonials" class="footer-link">Reviews</a></li>
+            <li><a href="#contact" class="footer-link">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Newsletter -->
+        <div>
+          <h4 class="footer-links-title">Newsletter</h4>
+          <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.5;">
+            Subscribe to our tech & design insights dispatch.
+          </p>
+          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed to Craft UI Newsletter!');">
+            <input type="email" placeholder="Enter your email" class="footer-newsletter-input" required>
+            <button type="submit" class="footer-newsletter-btn">JOIN</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div>&copy; 2026 CRAFT UI STUDIO. ALL RIGHTS RESERVED.</div>
+        <div style="display: flex; gap: 20px;">
+          <span>PRIVACY PROTOCOL</span>
+          <span>TERMS OF ENGAGEMENT</span>
+          <span>KERALA, INDIA</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       FLOATING AI ASSISTANT WIDGET ("CraftBot")
+       ========================================================================== -->
+  <button class="chatbot-trigger" id="chatbotTrigger" title="Chat with CraftBot" aria-label="Open AI Assistant">
+    <i data-lucide="message-circle" style="width: 28px; height: 28px;"></i>
+  </button>
+
+  <div class="chatbot-window" id="chatbotWindow">
+    <div class="chatbot-header">
+      <div class="chatbot-header-info">
+        <div class="chatbot-avatar">
+          <i data-lucide="bot" style="width: 18px; height: 18px;"></i>
+        </div>
+        <div>
+          <h4 class="chatbot-name">CraftBot AI</h4>
+          <div class="chatbot-status">
+            <span class="chatbot-status-dot"></span>
+            <span>Online & Ready</span>
+          </div>
+        </div>
+      </div>
+      <button class="chatbot-close-btn" id="chatbotCloseBtn" aria-label="Close Chat">&times;</button>
+    </div>
+
+    <div class="chatbot-messages" id="chatbotMessages">
+      <div class="chat-bubble bot">
+        Hello! I'm <strong>CraftBot</strong>, your assistant at Craft UI. How can we help build your next high-performance digital experience?
+      </div>
+    </div>
+
+    <!-- Quick action prompts -->
+    <div class="chat-quick-actions" id="chatQuickActions">
+      <button class="quick-action-btn" data-query="What services do you provide?">Services?</button>
+      <button class="quick-action-btn" data-query="What is your pricing?">Pricing?</button>
+      <button class="quick-action-btn" data-query="Can you develop a 3D animated website?">3D Websites?</button>
+      <button class="quick-action-btn" data-query="How do I start a project?">Start Project?</button>
+    </div>
+
+    <div class="chatbot-input-wrap">
+      <input type="text" id="chatbotInput" class="chatbot-input" placeholder="Type a message or question...">
+      <button class="chatbot-send-btn" id="chatbotSendBtn" aria-label="Send Message">
+        <i data-lucide="send" style="width: 18px; height: 18px;"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       SUBMIT REVIEW MODAL
+       ========================================================================== -->
+  <div class="modal-backdrop" id="reviewModal">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" id="closeReviewModalBtn">&times;</button>
+      <h3 style="font-family: var(--font-display); font-size: 32px; color: #fff; margin-bottom: 8px;">SUBMIT CLIENT REVIEW</h3>
+      <p style="font-size: 13.5px; color: var(--text-secondary); margin-bottom: 20px;">
+        Share your experience working with Craft UI Studio.
+      </p>
+
+      <form id="reviewSubmitForm">
+        <div class="form-field-group">
+          <label class="form-label">Rating</label>
+          <div class="star-rating-select" id="starRatingSelect">
+            <span class="star selected" data-value="1">&#9733;</span>
+            <span class="star selected" data-value="2">&#9733;</span>
+            <span class="star selected" data-value="3">&#9733;</span>
+            <span class="star selected" data-value="4">&#9733;</span>
+            <span class="star selected" data-value="5">&#9733;</span>
+          </div>
+        </div>
+
+        <div class="form-field-group">
+          <label class="form-label" for="reviewName">Your Name *</label>
+          <input type="text" id="reviewName" class="form-input" placeholder="e.g. David Ross" required>
+        </div>
+
+        <div class="form-field-group">
+          <label class="form-label" for="reviewRole">Role / Company *</label>
+          <input type="text" id="reviewRole" class="form-input" placeholder="e.g. CEO, Apex Brands" required>
+        </div>
+
+        <div class="form-field-group">
+          <label class="form-label" for="reviewText">Your Review *</label>
+          <textarea id="reviewText" class="form-textarea" placeholder="Tell us about the project outcome and collaboration..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn-transmit" style="margin-top: 14px;">
+          <span>Submit Review</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Main JavaScript Logic -->
+  <script src="script.js"></script>
+</body>
+</html>
